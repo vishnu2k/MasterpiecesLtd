@@ -9,8 +9,14 @@ const viewsPath=path.join(__dirname,'templates/views')
 const partialsPath=path.join(__dirname,'templates/partials')
 app.set('views',viewsPath)
 hbs.registerPartials(partialsPath)
-app.get('',(req,res)=>{
+app.get('/home',(req,res)=>{
 	res.render('index')
+})
+app.get('/about',(req,res)=>{
+	res.render('about')
+})
+app.get('/paintings',(req,res)=>{
+	res.render('paintings')
 })
 app.listen(port,() =>{
 	console.log('Server is up on port'+port)

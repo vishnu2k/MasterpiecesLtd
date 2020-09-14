@@ -1,6 +1,6 @@
 .site-footer
 {
-  background-color:#26272b;
+  background-color:#ffffff;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
@@ -17,7 +17,7 @@
 }
 .site-footer h6
 {
-  color:#fff;
+  color:#26272b;
   font-size:16px;
   text-transform:uppercase;
   margin-top:5px;
@@ -259,5 +259,263 @@ body {
   }
   #navbar-right {
     float: none;
+  }
+}
+.sonar-wrapper {
+  height: 100%;
+}
+
+/* Prevent scrollbars to appear when waves go out of bound */
+.sonar-wrapper {
+  position: absolute;
+  top: 35%;
+  left: 43%;
+  z-index: 0;
+  overflow: hidden;
+  padding: 8rem 0;
+}
+
+/* The circle */
+.sonar-emitter {
+  position: relative;
+  margin: 0 auto;
+  width: 75px;
+  height: 75px;
+  border-radius: 1999px;
+  background-color: HSL(45,100%,50%);
+}
+
+/* the 'wave', same shape and size as its parent */
+.sonar-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: HSL(45,100%,50%);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.sonar-wave {
+  animation: sonarWave 2s linear infinite;
+}
+
+@keyframes sonarWave {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.sonar-wrapper1 {
+  height: 100%;
+}
+
+/* Prevent scrollbars to appear when waves go out of bound */
+.sonar-wrapper1 {
+  position: absolute;
+  top: 35%;
+  left: 53%;
+  z-index: 0;
+  overflow: hidden;
+  padding: 8rem 0;
+}
+
+/* The circle */
+.sonar-emitter1 {
+  position: relative;
+  margin: 0 auto;
+  width: 75px;
+  height: 75px;
+  border-radius: 1999px;
+  background-color: HSL(45,100%,50%);
+}
+
+/* the 'wave', same shape and size as its parent */
+.sonar-wave1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: HSL(45,100%,50%);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.sonar-wave1 {
+  animation: sonarWave1 2s linear infinite;
+}
+
+@keyframes sonarWave1 {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+.button5 {
+  position: absolute;
+  top:20%;
+  left:47%;
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-width: 1px;
+  background-color: #ffb0b0;
+  margin-bottom: 0px;
+}
+.dropdown button{
+  background-color:#28df99;
+  border-width: 0px;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content p:hover {background-color:#fe7171 ;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.hoving:hover button{
+  background-color: #d6e0f0;
+}
+.hoving button {
+  background-color: #ffffff;
+  width:110px;
+  height: 50px;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover button {
+  background-color: #99f3bd;
+}
+h7 {
+text-align: center;
+padding-left:207px;
+font-size: 24px;
+font-weight: lighter;
+font-family: 'Patrick Hand';
+}
+
+#left{
+  border-left: 2px solid black;
+  border-top:2px solid black;
+  border-right: 0px solid black;
+  border-bottom: 0px solid black;
+  max-height: 600px;
+  max-width: 33%;
+  border-style: dotted;
+  border-radius: 0px;
+}
+#middle{
+  border-left: 2px solid black;
+  border-top:2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 0px solid black;
+  max-height: 600px;
+  max-width: 33%;
+  border-style: dotted;
+  border-radius: 0px;
+}
+#right{
+  border-left: 0px solid black;
+  border-top:2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 0px solid black;
+  max-height: 600px;
+  max-width: 33%;
+  border-style: dotted;
+  border-radius: 0px;
+}
+.opt1 {
+  position: relative;
+  text-align: right;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 1px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #79d70f, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+.opt2 {
+  position: relative;
+  text-align: right;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 1px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #ec0101, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate1 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate1 {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
   }
 }
