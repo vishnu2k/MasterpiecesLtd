@@ -1,0 +1,51 @@
+<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hire Paintings!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Dancing+Script&family=Shadows+Into+Light&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {{#if isSell}}
+    <link rel="stylesheet" type="text/css" href="/css/sell_css.css">
+  {{else}}
+    <link rel="stylesheet" type="text/css" href="/css/log_foot.css">
+  {{/if}}
+</head>
+<body style="background-color:#e7e5e8;">
+  <nav class="navbar navbar-default" style="margin-bottom:0px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="home" style="font-family:sofia;color:#be5683;">Masterpieces Ltd.</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home">Home</a></li>
+      <li ><a  href="#">Artists</a>
+      </li>
+      <li><a href="paintings">Paintings</a></li>
+      <li><a href="about">About Us</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <div class="dropdown1">
+          <div class="dropbtn1"> Welcome! {{username}} &#9660;
+          </div>
+          <div class="dropdown1-content1">
+            <a href="profile">Profile</a>
+            <a href="logout">Log Out</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+</header>

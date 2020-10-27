@@ -1,0 +1,59 @@
+{{#if isLoggedIn}}
+   {{>login_page_header}}
+{{else}}
+  {{>log_header}}
+{{/if}}
+{{#if isWrong}}
+    {{#each errors}}
+      <div class="alert">   
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong>Retry!</strong> {{this.msg}} 
+      </div>   
+    {{/each}}
+{{/if}}
+<div class="page-container" style="background-color: #ff7e67;">
+	<h1 style="text-align: center;font-weight: bolder;font-size: 60px;font-family: 'Sofia';margin-top:10px;padding-bottom: 0px;">Sell Painting :)</h1>
+   	<div class="wrapper fadeInDown">
+  		<div id="formContent">
+  			<form method="POST" action="submit_painting" enctype="multipart/form-data">
+    	    <div class="row">
+    	    	<div class="col-sm-4">
+    	    		<h1 style="text-align: center;font-weight: bolder;font-size: 40px;font-family: 'Sofia';">Painting Info</h1>
+      			<input type="text" id="price" class="fadeIn first" name="price" placeholder="Price Expected">
+      			<input type="text" id="title" class="fadeIn second" name="title" placeholder="Title">
+      			<input type="text" id="desc" class="fadeIn third" name="desc" placeholder="Description">
+            	<input type="text" id="weight" class="fadeIn third" name="weight" placeholder="Weight">
+            	<input type="text" id="genre" class="fadeIn third" name="genre" placeholder="Genre">
+            	<input type="text" id="height" class="fadeIn third" name="height" placeholder="Height in Inches">
+            	<input type="text" id="width" class="fadeIn third" name="width" placeholder="Width in Inches">
+            	<label for="dob">Date Painted:</label>
+            	<input type="date" id="dopaint" class="fadeIn third" name="dopaint" placeholder="Date Painted">
+             </div>
+    		<div class="col-sm-4">
+    			<h1 style="text-align: center;font-weight: bolder;font-size: 40px;font-family: 'Sofia';">Artist Info</h1>
+      			<input type="text" id="art_first_name" class="fadeIn second" name="art_first_name" placeholder="First Name">
+            	<input type="text" id="art_middle_name" class="fadeIn third" name="art_middle_name" placeholder="Middle Name">
+            	<input type="text" id="art_last_name" class="fadeIn third" name="art_last_name" placeholder="Last Name">
+            	<input type="text" id="art_place_of_birth" class="fadeIn third" name="art_place_of_birth" placeholder="Place of Birth">
+              <label for="dob">Date of Birth:</label>
+              <input type="date" id="art_dob" class="fadeIn third" name="art_dob" placeholder="Date of Birth">
+            	<label for="dob">Date of Death if Applicable:</label>
+            	<input type="date" id="art_dodeath" class="fadeIn third" name="art_dodeath" placeholder="Date of Death">
+        </div>
+        <div class="col-sm-4" style="padding-top:100px;">
+            	<input type="text" id="art_street" class="fadeIn third" name="art_street" placeholder="Street" >
+            	<input type="text" id="art_city" class="fadeIn third" name="art_city" placeholder="City">
+            	<input type="text" id="art_state" class="fadeIn third" name="art_state" placeholder="State">
+            	<input type="text" id="art_country" class="fadeIn third" name="art_country" placeholder="Country">
+            	<label for="img">Select image:</label>
+  				<input type="file" id="pain_img" name="pain_img" accept="image/x-png,image/gif,image/jpeg">
+            	<input type="submit" class="fadeIn fourth" value="SUBMIT">
+      		</div>
+         </div>
+    		</form>
+
+  		</div>
+	</div>
+</div>
+</div>
+{{>footer}}

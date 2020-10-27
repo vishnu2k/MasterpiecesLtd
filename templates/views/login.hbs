@@ -1,5 +1,14 @@
-{{>log_header}}
-
+{{#if isLoggedIn}}
+   {{>login_page_header}}
+{{else}}
+  {{>log_header}}
+{{/if}}
+{{#if isWrong}}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Retry!</strong> {{message}}
+</div>
+{{/if}}
 <div class="page-container">
    <div class="col-sm-8">
    	<img src="img/log_back3.jpg" style="height: 800px;width: 1200px;">
@@ -19,7 +28,7 @@
     		
 
     <!-- Login Form -->
-    		<form method="POST" action="submit">
+    		<form method="POST" action="auth">
       			<input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
       			<input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
       			<input type="submit" class="fadeIn fourth" value="Log In">

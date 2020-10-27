@@ -1,4 +1,8 @@
-{{>header }}
+{{#if isLoggedIn}}
+   {{>logged_header}}
+{{else}}
+   {{>header }}
+{{/if}}
 <div class='container'>
   <h1 style="text-align:center;padding-top:1%;font-family:sofia;font-size:64px;color:#be5683;text-decoration: underline;">Masterpieces Ltd.</h1>
     <h2 style="text-align:center;padding-top:1%;font-family:monospace;color:#848ccf;">Inhale Possibility, Exhale Creativity.</h2>
@@ -11,7 +15,7 @@
 </div>
 <div class="sonar-wrapper1" >
   <div class="sonar-emitter1">
-    <div style="padding-top:24px;padding-left:13px;font-size:22px;font-family: monospace;"><a href="paintings" style="color:#000000;">SELL</a></div>
+    <div style="padding-top:24px;padding-left:13px;font-size:22px;font-family: monospace;"><a href="sell" style="color:#000000;">SELL</a></div>
     <div class="sonar-wave1"></div>
   </div>
 </div>

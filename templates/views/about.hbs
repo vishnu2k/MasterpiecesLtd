@@ -1,4 +1,8 @@
-{{>header}}
+{{#if isLoggedIn}}
+   {{>logged_header}}
+{{else}}
+   {{>header }}
+{{/if}}
 <div class="page-container" style="background-color: #ffffff;margin-bottom: 0px;">
 	<button class="button button5">ABOUT</button>
    	<img src="img/back1.png" style="display: block;
