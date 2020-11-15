@@ -1,0 +1,84 @@
+{{#if isLoggedIn}}
+   {{>logged_header}}
+{{else}}
+  {{>header}}
+{{/if}}
+
+<div class="container" style="background-color:#28df99;margin-top:0px;margin-bottom:0px;border-radius: 5px;width: 100%">
+<div class="row">
+<div class="col-sm-2" style="font-size:30px;font-weight: bold;font-family: sofia;">Filters:</div>
+  <div class="col-sm-2">
+  	<div class="dropdown">
+  		<button style="font-size:30px;font-weight: lighter;font-family: sofia;">Sort By</button>
+  		<div class="dropdown-content" style="font-family: monospace;">
+          <p><a href="newest" style="color:black;">Newest</a></p>
+    	  <p><a href="newest" style="color:black;">Oldest</a></p>
+          <p><a href="" style="color:black;">Best Selling</a></p>
+          <p><a href="" style="color:black;">Alphabetical</a></p>
+          <p><a href="" style="color:black;">Price</a></p>
+  		</div>
+	</div>
+  </div>
+  <div class="col-sm-2">
+  	<div class="dropdown">
+  		<button style="font-size:30px;font-weight: lighter;font-family: sofia;">Theme</button>
+  		<div class="dropdown-content" style="font-family: monospace;">
+           <p>Abstarct</p>
+           <p>Conceptual</p>
+           <p>Cubism</p>
+           <p>Decorative</p>
+           <p>Digital</p>
+           <p>Expressionism</p>
+           <p>Fantasy</p>
+           <p>Folk</p>
+           <p>Impressionism</p>
+           <p>Illustration</p> 
+           <p>Realism</p>
+  		</div>
+  		</div>
+	</div>
+<div class="col-sm-2">
+	<div class="hoving">
+  <button >Clear Filters</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container" style="width: 100%;background-color: #ffffff;margin-left: 10px;border-bottom: 1px solid black;border-bottom-style: dashed;">
+	<div class="row" style="text-align: center;font-size: 45px;font-family:'Shadows Into Light';">
+		Paintings Found
+	</div>
+	<div class="row">
+{{#each pain_info}}
+      {{#check @index }}
+      <div class="col-sm-4" id="left">
+      	    {{#if this.isHired}}
+				<div class="opt2" style="background-color: #ec0101;">SOLD</div>
+			{{else}}
+				<div class="opt1" style="background-color: #79d70f;">In Stock</div>
+			{{/if}}
+			<a href="paintings/{{this.painting_ID}}">
+			<img src={{this.pic_path}} style="height: 250px;width: 300px;display: block;margin-left: auto;margin-right: auto;margin-top: 10px;">
+			<h7>{{this.Title}}</h7></a>
+		</div>
+      </div>
+      <div class="row">
+      {{else}}
+      <div class="col-sm-4" id="left">
+			{{#if this.isHired}}
+				<div class="opt2" style="background-color: #ec0101;">SOLD</div>
+			{{else}}
+				<div class="opt1" style="background-color: #79d70f;">In Stock</div>
+			{{/if}}
+			<a href="paintings/{{this.painting_ID}}">
+			<img src={{this.pic_path}} style="height: 250px;width: 300px;display: block;margin-left: auto;margin-right: auto;margin-top: 10px;">
+			<h7>{{this.Title}}</h7></a>
+		</div>
+      {{/check}}
+ {{/each}}
+{{#if result_len}}
+</div>
+{{/if}}
+</div>
+{{>footer}}

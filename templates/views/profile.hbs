@@ -1,14 +1,18 @@
-{{>header}}
+{{#if isLoggedIn}}
+   {{>logged_header}}
+{{else}}
+   {{>header }}
+{{/if}}
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
-<link href="css/profile.css" rel="stylesheet">
+<link href="../css/profile.css" rel="stylesheet">
 <div class="main-content">
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image:;background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 70px; background-image:;background-size: cover; background-position: center top;">
         <span class="mask bg-gradient-default opacity-8"></span>
         <div class="container-fluid d-flex align-items-center">
             <div class="row">
                 <div class="col-lg-7 col-md-10">
-                    <h1 class="text-white" style="font-size: 70px ;font-family: 'Sansita Swashed', cursive;">Hello User</h1>
+                    <h1 class="text-white" style="font-size: 70px ;font-family: 'Sansita Swashed', cursive;">Hello {{username}}</h1>
                     <a href="#!" class="btn btn-info" style="font-size:15px">Edit profile</a>
                 </div>
             </div>
@@ -22,7 +26,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="img/cat-bronze.jpg" class="rounded-circle" style="margin-left: 10px">
+                                    <img src="../img/cat-{{user_info.category_type}}.jpg" class="rounded-circle" style="margin-left: 10px">
                                 </a>
                             </div>
                         </div>
@@ -38,9 +42,9 @@
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                                     <div>
-                                        <span class="heading" style="font-size: 15px">22</span>
+                                        <span class="heading" style="font-size: 15px">{{user_info.paintings_owned}}</span>
                                         <span class="description" style="font-size: 15px">Paintings</span>
-                                        <span class="description" style="font-size: 15px">sold</span>
+                                        <span class="description" style="font-size: 15px">Owned</span>
                                     </div>
                                     <div>
                                         <span class="heading" style="font-size: 15px">10</span>
@@ -48,7 +52,7 @@
                                         <span class="description" style="font-size: 15px">hired</span>
                                     </div>
                                     <div>
-                                        <span class="heading" style="font-size: 15px">8</span>
+                                        <span class="heading" style="font-size: 15px">{{user_info.paintings_expired}}</span>
                                         <span class="description"style="font-size: 15px">Expired</span>
                                     </div>
                                 </div>
@@ -95,40 +99,40 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-username" style="font-size: 15px">Username</label>
-                                            <input type="text" id="input-username" class="form-control form-control-alternative" style="font-size: 13px" placeholder="Username" value="User_Us59">
+                                            <label class="form-control-label" for="input-username" style="font-size: 15px"></label>
+                                            <input type="text" id="input-username" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{username}}" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-email"style="font-size: 15px">Email address</label>
-                                            <input type="email" id="input-email" class="form-control form-control-alternative" style="font-size: 13px" placeholder="user_us59@gmail.com">
+                                            <label class="form-control-label" for="input-email"style="font-size: 15px">Email ID</label>
+                                            <input type="email" id="input-email" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{user_info.mail_ID}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-first-name" style="font-size: 15px">First name</label>
-                                            <input type="text" id="input-first-name" class="form-control form-control-alternative" style="font-size: 13px" placeholder="First name" value="User_first">
+                                            <label class="form-control-label" for="input-first-name" style="font-size: 15px">First Name</label>
+                                            <input type="text" id="input-first-name" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{user_info.first_name}}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-last-name" style="font-size: 15px">Middle name</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" style="font-size: 13px" placeholder="Middle name" value="User_middle">
+                                            <label class="form-control-label" for="input-last-name" style="font-size: 15px">Middle Name</label>
+                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{user_info.mid_name}}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-last-name" style="font-size: 15px">Last name</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" style="font-size: 13px" placeholder="Last name" value="User_last">
+                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{user_info.last_name}}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-DOB" style="font-size: 15px">Date of Birth</label>
-                                            <input type="Date" id="DOB" class="form-control form-control-alternative" style="font-size: 13px" placeholder="DOB" value="2000-12-20">
+                                            <input type="text" id="DOB" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{user_info.DOB}}">
                                         </div>
                                     </div>
                                 </div>
@@ -154,8 +158,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-address" style="font-size: 15px">Address</label>
-                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" style="font-size: 13px" value="Amrita vishwa Vidhyapeetham,Ettimadai" type="text">
+                                            <label class="form-control-label" for="input-address" style="font-size: 15px">Street</label>
+                                            <input id="input-address" class="form-control form-control-alternative" placeholder="{{user_info.street}}" style="font-size: 13px"  type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -163,19 +167,19 @@
                                     <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-city" style="font-size: 15px">City</label>
-                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" style="font-size: 13px" value="CBE">
+                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="{{user_info.city}}" style="font-size: 13px" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-city" style="font-size: 15px">State</label>
-                                            <input type="text" id="input-State" class="form-control form-control-alternative" placeholder="State" style="font-size: 13px" value="TN">
+                                            <input type="text" id="input-State" class="form-control form-control-alternative" placeholder="{{user_info.state}}" style="font-size: 13px" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-country" style="font-size: 15px">Country</label>
-                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" style="font-size: 13px" value="India">
+                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="{{user_info.country}}" style="font-size: 13px">
                                         </div>
                                     </div>
                                 </div>
