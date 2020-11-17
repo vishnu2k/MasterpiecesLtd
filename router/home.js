@@ -58,7 +58,7 @@ router.post('/auth', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true
 				request.session.username = username
-				response.redirect('/home')
+				response.redirect('/'+username+'/profile')
 			} else {
 				response.render('login',{message:'Incorrect Username and/or Password!',isWrong:true,isSell:false})
 				return;	
@@ -69,6 +69,26 @@ router.post('/auth', function(request, response) {
 		response.render('login',{message:'Please enter Username and Password!',isWrong:true,isSell:false})
 		return;
 	}
+})
+router.get('/paintings',(req,res)=>{
+  let query=`SELECT * FROM  Paintings;Select distinct Genre FROM Paintings;`
+    db.query(query,function(err,result,fields){
+    if (err){
+      console.log('error in changing database', err);
+              return;
+    }
+    else{
+    console.log(result.length)
+    if(result[0].length%3==0){
+        res.render('sample_pain',{username:req.session.username,isLoggedIn:req.session.loggedin,pain_info:result[0],pain_theme:result[1],result_len:0})
+    }
+    else{
+        res.render('sample_pain',{username:req.session.username,isLoggedIn:req.session.loggedin,pain_info:result[0],pain_theme:result[1],result_len:1})
+    }
+        return;
+      }
+        
+  })
 })
 router.get('/logout',(req,res)=>{
 	req.session.loggedin=false;
@@ -101,6 +121,7 @@ router.get('/:user_ID/profile',(req,res)=>{
 		}
 		req.session.user_info=user_info;
 		console.log(new Date(result[0][0].DOB).toDateString());
+    //req.session.owner_ID=result[1][0].owner_id
         	if(result[1].length==0){
                   req.session.user_info.paintings_owned=0
                   req.session.user_info.paintings_expired=0
@@ -125,7 +146,7 @@ router.get('/:user_ID/profile',(req,res)=>{
         	}
 	    }
 	    console.log(req.session.user_info);
-        res.render('profile',{username:req.session.username,isLoggedIn:req.session.loggedin,user_info:req.session.user_info})
+        res.render('profile',{username:req.session.username,isLoggedIn:req.session.loggedin,user_info:req.session.user_info,isSell:false,isWrong:false})
 	})
 	
 })
@@ -354,7 +375,7 @@ router.post('/submit_painting',type,[
     	console.log(req.file);
         var tmp_path = req.file.path;
         console.log(req.file.originalname);
-  		var target_path = 'uploads/' +'pain_3.'+req.file.originalname.split('.')[1];
+  		var target_path = 'uploads/' +req.file.originalname;
   		let post={
   			artist_first_name:req.body.art_first_name,
   			artist_mid_name:req.body.art_middle_name,
@@ -366,7 +387,10 @@ router.post('/submit_painting',type,[
   			artist_Place_of_birth:req.body.art_place_of_birth,
   			artist_DOB:req.body.art_dob
   		}
-  		db.query('SELECT MAX(artist_ID) AS last_index FROM Artist',function(error, result, fields) {
+      if(req.body.art_dodeath!=null){
+        post.artist_Date_of_Death=req.body.art_dodeath
+      }
+  		
 			let sql='INSERT INTO Artist SET ?'
     	 		db.query(sql,post,err=>{
 				if (err){
@@ -374,6 +398,7 @@ router.post('/submit_painting',type,[
       				return;
 					}
 				})
+        db.query('SELECT MAX(artist_ID) AS last_index FROM Artist',function(error, result, fields) {
 				let post1={artist_ID:result[0].last_index,artist_phone_No:req.body.art_phone_no}
 				db.query('INSERT INTO Artist_phone SET ?',post1,err=>{
                    if (err){
@@ -381,23 +406,29 @@ router.post('/submit_painting',type,[
       				return;
 					}
 				})
+
                 function get_owner(callback){
       
       					var sql = 'SELECT owner_ID AS owner_index FROM User_Owner WHERE user_ID=?';
-
       							db.query(sql,[req.session.username],function(err, results,fields){
             								if (err){ 
             								  throw err;
             								}
+                              
             								console.log('inside_get_owner'+results[0].owner_index); // good
             								stuff_i_want = results[0].owner_index;  // Scope is larger than function
 
            								return callback(results[0].owner_index);
     								})
 								}
+        
 				var owner_index;
 				get_owner(function(results){
     			owner_index= results;
+          var currentdate=new Date()
+          currentdate=currentdate.toISOString().split('T')[0] + ' '  
+                        + currentdate.toTimeString().split(' ')[0];
+                        console.log(currentdate);
     			let post2={
                     Price:req.body.price,
                     Date_painted:req.body.dopaint,
@@ -407,13 +438,13 @@ router.post('/submit_painting',type,[
                     Genre:req.body.genre,
                     Title:req.body.title,
                     Description:req.body.desc,
-                    artist_ID:result[0].last_index+1,
+                    artist_ID:result[0].last_index,
                     owner_ID:owner_index,
                     No_of_times_rented:0,
                     isHired:0,
                     isExpired:0,
-                    Date_posted:"2020-10-29",
-                    reinstateDate:"2020-10-29",
+                    Date_posted:currentdate,
+                    reinstateDate:currentdate,
                     pic_path:target_path.split('/')[1]
 				}
 				db.query('INSERT INTO Paintings SET ?',post2,(err)=>{

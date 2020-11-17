@@ -1,50 +1,44 @@
 {{#if isLoggedIn}}
-   {{>logged_header}}
+    {{>logged_header}}
 {{else}}
-  {{>header}}
+    {{>header}}
 {{/if}}
-
 <div class="container" style="background-color:#28df99;margin-top:0px;margin-bottom:0px;border-radius: 5px;width: 100%">
-<div class="row">
-<div class="col-sm-2" style="font-size:30px;font-weight: bold;font-family: sofia;">Filters:</div>
-  <div class="col-sm-2">
-  	<div class="dropdown">
-  		<button style="font-size:30px;font-weight: lighter;font-family: sofia;">Sort By</button>
-  		<div class="dropdown-content" style="font-family: monospace;">
-          <p><a href="newest" style="color:black;">Newest</a></p>
-    	  <p><a href="newest" style="color:black;">Oldest</a></p>
-          <p><a href="" style="color:black;">Best Selling</a></p>
-          <p><a href="" style="color:black;">Alphabetical</a></p>
-          <p><a href="" style="color:black;">Price</a></p>
-  		</div>
-	</div>
-  </div>
-  <div class="col-sm-2">
-  	<div class="dropdown">
-  		<button style="font-size:30px;font-weight: lighter;font-family: sofia;">Theme</button>
-  		<div class="dropdown-content" style="font-family: monospace;">
-           <p>Abstarct</p>
-           <p>Conceptual</p>
-           <p>Cubism</p>
-           <p>Decorative</p>
-           <p>Digital</p>
-           <p>Expressionism</p>
-           <p>Fantasy</p>
-           <p>Folk</p>
-           <p>Impressionism</p>
-           <p>Illustration</p> 
-           <p>Realism</p>
-  		</div>
-  		</div>
-	</div>
-<div class="col-sm-2">
-	<div class="hoving">
-  <button >Clear Filters</button>
+    <div class="row">
+        <div class="col-sm-2" style="margin-top: 15px;font-size:30px;font-weight: bold;font-family: sofia;">Filters:</div>
+        <form method="POST" action="filter">
+            <div class="col-sm-3">
+                <label for="filters" style="margin-top: 15px;font-size:30px;font-weight: lighter;font-family: sofia;"></label>
+                <select id="fil" name="fil" style="background-color:#28df99;margin-top: 15px;font-size:30px;font-weight: lighter;font-family: sofia;border:solid 2px;">
+                    <option value="all" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Sort By</option>
+                    <option value="nothired" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Not Sold</option>
+                    <option value="new" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Newest</option>
+                    <option value="old" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Oldest</option>
+                    <option value="best" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Best Selling</option>
+                    <option value="alpha" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Alphabetical</option>
+                    <option value="price" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Price</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label for="filters" style="font-size:30px;font-weight: lighter;font-family: sofia;"></label>
+                <select id="theme" name="theme" style="background-color:#28df99;margin-top: 15px;font-size:30px;font-weight: lighter;font-family: sofia;border:solid 2px;">
+                    <option value="all" style="background-color:#fe7171;font-size:20px;font-family:monospace;">Themes</option>
+                    {{#each pain_theme}}
+                        <option style="background-color:#fe7171;font-size:20px;font-family:monospace;" value={{this.Genre}}>{{this.Genre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <input type="submit" class="hoving" style="margin-top: 15px;font-size:30px;font-weight: lighter;font-family: sofia;background-color:#28df99;" value="Apply Filter">
+            </div>
+        </form>
+        <div class="col-sm-2">
+            <form method="get" action="paintings">
+                <input type="submit" class="hoving" value="Clear Filters" style='font-size:30px;font-weight: lighter;font-family: sofia;background-color:#28df99;'>
+            </form>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
-
 <div class="container" style="width: 100%;background-color: #ffffff;margin-left: 10px;border-bottom: 1px solid black;border-bottom-style: dashed;">
 	<div class="row" style="text-align: center;font-size: 45px;font-family:'Shadows Into Light';">
 		Paintings Found

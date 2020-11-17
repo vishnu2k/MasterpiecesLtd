@@ -2,7 +2,7 @@ const mysql=require('mysql')
 const db=mysql.createConnection({
 	host:'localhost',
 	user:'root',
-	password:'Srivathsan99',
+	password:'password',
 	insecureAuth : true,
 	database:'painting_hire_buss',
 	multipleStatements: true
