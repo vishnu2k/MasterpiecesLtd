@@ -180,6 +180,7 @@ router.get('/paintings/:painting_ID',(req,res)=>{
       				return;
 		}
 		else{
+      result[0].Date_painted=result[0].Date_painted.toDateString()
         res.render('painting_info',{username:req.session.username,isLoggedIn:req.session.loggedin,pain_info:result[0]})
         return;
 	    }
@@ -188,6 +189,10 @@ router.get('/paintings/:painting_ID',(req,res)=>{
 	
 })
 router.get('/add_order/:painting_ID',(req,res)=>{
+  if(req.session.username==undefined){
+    res.redirect('/login')
+    return;
+  }
 	let query='SELECT * FROM User_Customer WHERE user_ID=?'
 	db.query(query,[req.session.username],function(err,result,fields){
 		if (err){

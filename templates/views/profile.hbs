@@ -1,11 +1,10 @@
 {{#if isLoggedIn}}
-   {{>logged_header}}
+   {{>profile_header}}
 {{else}}
    {{>header }}
 {{/if}}
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
-<link href="../css/profile.css" rel="stylesheet">
 <div class="main-content">
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 70px; background-image:;background-size: cover; background-position: center top;">
         <span class="mask bg-gradient-default opacity-8"></span>
@@ -46,11 +45,6 @@
                                         <span class="description" style="font-size: 15px">Owned</span>
                                     </div>
                                     <div>
-                                        <span class="heading" style="font-size: 15px">10</span>
-                                        <span class="description" style="font-size: 15px">Paintings</span>
-                                        <span class="description" style="font-size: 15px">hired</span>
-                                    </div>
-                                    <div>
                                         <span class="heading" style="font-size: 15px">{{user_info.paintings_expired}}</span>
                                         <span class="description"style="font-size: 15px">Expired</span>
                                     </div>
@@ -59,8 +53,8 @@
                         </div>
                         <div class="text-center">
                             <h3>
-                                <a href='../{{username}}/paintings_rented'><span class="font-weight-light" style="font-size: 17px">Show Paintings Rented</span></a>||
-                                <a href='../{{username}}/paintings_owned'><span class="font-weight-light" style="font-size: 17px">Show Paintings Owned</span></a>
+                                <a href='../{{username}}/paintings_rented'><span class="font-weight-light" style="font-size: 17px;color:red;">Show Paintings Rented</span></a>||
+                                <a href='../{{username}}/paintings_owned'><span class="font-weight-light" style="font-size: 17px;color:red;">Show Paintings Owned</span></a>
                             </h3>
                             <div class="h5 font-weight-300">
                                 <h1>
@@ -88,13 +82,13 @@
                     </div>
                     <div class="card-body">
                         <form>
-                            <h6 class="heading-small text-muted mb-4" style="font-size: 12px">User information</h6>
+                            <h6 class="heading-small text-muted mb-4" style="font-size: 12px;font-weight:bolder;">User information</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-username" style="font-size: 15px"></label>
-                                            <input type="text" id="input-username" class="form-control form-control-alternative" style="font-size: 13px" placeholder="{{username}}" >
+                                            <label class="form-control-label" for="input-username" style="font-size: 15px">user ID</label>
+                                            <input type="text" id="input-username" class="form-control form-control-alternative" style="font-size: 13px;color:black;opacity:1;font-weight:bolder;" placeholder="{{username}}" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

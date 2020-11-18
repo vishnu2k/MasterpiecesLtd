@@ -37,9 +37,9 @@ app.get('/home',(req,res)=>{
 app.get('/about',(req,res)=>{
 	res.render('about',{username:req.session.username,isLoggedIn:req.session.loggedin})
 })
-app.get('/paintings',(req,res)=>{
+/*app.get('/paintings',(req,res)=>{
 	res.render('paintings',{username:req.session.username,isLoggedIn:req.session.loggedin})
-})
+})*/
 app.get('/login',(req,res)=>{
 	res.render('login',{username:req.session.username,isLoggedIn:req.session.loggedin,isWrong:false,isSell:false});
 	

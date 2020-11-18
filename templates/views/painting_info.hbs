@@ -20,10 +20,12 @@
         <div class="container" style="width:100%;padding-top: 40px;padding-left: 100px;">
             {{#if pain_info.isHired}}
                 <div class="opt2" style="background-color: #ec0101;width:40%;float:left;text-align: center;border:2px solid black;font-size:40px;">SOLD</div>
+                <button class="button_pain_info" >RENT</button>
             {{else}}
                 <div class="opt1" style="background-color: #79d70f;width:40%;float:left;text-align: center;border:2px solid black;font-size:40px;">In Stock</div>
+                <a href="../add_order/{{pain_info.painting_ID}}"><button class="button_pain_info" >RENT</button></a>
             {{/if}}
-			<a href="../add_order/{{pain_info.painting_ID}}"><button class="button_pain_info" >RENT</button></a>
+			
 			</div>
 	</div>
 	</div>
